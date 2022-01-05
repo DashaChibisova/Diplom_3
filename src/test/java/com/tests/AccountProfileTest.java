@@ -18,6 +18,7 @@ public class AccountProfileTest extends BaseClass {
     @Test
     public void checkGoToAccountProfilePage() {
         boolean actual = account.isAccountProfile();
+
         Assert.assertTrue(actual);
     }
 

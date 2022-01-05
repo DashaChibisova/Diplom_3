@@ -15,45 +15,48 @@ public class LoginInAccountTest extends BaseClass{
     @Before
     public void init() {
         login = new LoginPage(driver);
+        user.getRandom(6);
+        registration();
     }
 
-    @DisplayName("Переход на страницу регистрации по кнопке 'Войти в аккаунт' на главной странице ")
+    @DisplayName("Можно залогиниться через кнопку 'Войти в аккаунт' на главной странице ")
     @Test
     public void chekWorkButtonEntryOnMainPage() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open().clickOnButtonLogin();
+        boolean expectedMainPage = login.login(user.getEmail(), user.getPassword()).isMainPageIfUserLogin();
 
-        boolean expected = login.isLoginPage();
-        Assert.assertTrue(expected);
+        Assert.assertTrue(expectedMainPage);
+
     }
 
-    @DisplayName("Переход на страницу регистрации по кнопке 'Личный Кабинет' на главной странице ")
+    @DisplayName("Можно залогиниться через кнопку 'Личный Кабинет' на главной странице ")
     @Test
     public void chekWorkButtonEntryOnPersonalCabinet() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open().clickOnButtonAccountProfile();
+        boolean expectedMainPage = login.login(user.getEmail(), user.getPassword()).isMainPageIfUserLogin();
 
-        boolean expected = login.isLoginPage();
-        Assert.assertTrue(expected);
+        Assert.assertTrue(expectedMainPage);
     }
 
-    @DisplayName("Переход на страницу регистрации через кнопку в форме регистрации")
+    @DisplayName("Можно залогиниться через кнопку Вход в форме регистрации")
     @Test
     public void chekWorkButtonEntryOnFormRegistration() {
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.open().clickOnButtonLogin();
+        boolean expectedMainPage = login.login(user.getEmail(), user.getPassword()).isMainPageIfUserLogin();
 
-        boolean expected = login.isLoginPage();
-        Assert.assertTrue(expected);
+        Assert.assertTrue(expectedMainPage);
     }
 
-    @DisplayName("Переход на страницу регистрации через кнопку в форме восстановления пароля")
+    @DisplayName("Можно залогиниться через кнопку Вход в форме восстановления пароля")
     @Test
     public void chekWorkButtonEntryOnFormForgotPassword() {
         ForgotPasswordPage page = new ForgotPasswordPage(driver);
         page.open().clickOnButtonLogin();
+        boolean expectedMainPage = login.login(user.getEmail(), user.getPassword()).isMainPageIfUserLogin();
 
-        boolean expected = login.isLoginPage();
-        Assert.assertTrue(expected);
+        Assert.assertTrue(expectedMainPage);
     }
 }
