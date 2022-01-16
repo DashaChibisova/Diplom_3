@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LoginInAccountTest extends BaseClass{
+public class LoginInAccountTest extends TestSteps{
     private LoginPage login;
 
     @Before
@@ -23,7 +23,8 @@ public class LoginInAccountTest extends BaseClass{
     @Test
     public void chekWorkButtonEntryOnMainPage() {
         MainPage mainPage = new MainPage(driver);
-        mainPage.open().clickOnButtonLogin();
+        open(mainPage.URL);
+        mainPage.clickOnButtonLogin();
         boolean expectedMainPage = login.login(user.getEmail(), user.getPassword()).isMainPageIfUserLogin();
 
         Assert.assertTrue(expectedMainPage);
@@ -34,7 +35,8 @@ public class LoginInAccountTest extends BaseClass{
     @Test
     public void chekWorkButtonEntryOnPersonalCabinet() {
         MainPage mainPage = new MainPage(driver);
-        mainPage.open().clickOnButtonAccountProfile();
+        open(mainPage.URL);
+        mainPage.clickOnButtonAccountProfile();
         boolean expectedMainPage = login.login(user.getEmail(), user.getPassword()).isMainPageIfUserLogin();
 
         Assert.assertTrue(expectedMainPage);
@@ -44,7 +46,8 @@ public class LoginInAccountTest extends BaseClass{
     @Test
     public void chekWorkButtonEntryOnFormRegistration() {
         RegisterPage registerPage = new RegisterPage(driver);
-        registerPage.open().clickOnButtonLogin();
+        open(registerPage.URL_REGISTER);
+        registerPage.clickOnButtonLogin();
         boolean expectedMainPage = login.login(user.getEmail(), user.getPassword()).isMainPageIfUserLogin();
 
         Assert.assertTrue(expectedMainPage);
@@ -54,7 +57,8 @@ public class LoginInAccountTest extends BaseClass{
     @Test
     public void chekWorkButtonEntryOnFormForgotPassword() {
         ForgotPasswordPage page = new ForgotPasswordPage(driver);
-        page.open().clickOnButtonLogin();
+        open(page.URL_FORGOT_PASSWORD);
+        page.clickOnButtonLogin();
         boolean expectedMainPage = login.login(user.getEmail(), user.getPassword()).isMainPageIfUserLogin();
 
         Assert.assertTrue(expectedMainPage);

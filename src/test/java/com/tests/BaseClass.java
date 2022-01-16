@@ -16,11 +16,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 
 public class BaseClass {
+
+    private static final int TIME = 10;
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected UserData user = new UserData();
     protected RegisterPage register;
-
+    protected UserData user = new UserData();
 
     @Before
     public void setUp() {
@@ -39,22 +40,4 @@ public class BaseClass {
         driver.quit();
         driver = null;
     }
-
-    @Step
-    public void registration() {
-        register = new RegisterPage(driver);
-        register
-                .open()
-                .registration(user.getEmail(), user.getPassword(), user.getName())
-                .clickButtonRegister();
-    }
-
-    @Step
-    public MainPage login() {
-        user.getRandom(7);
-        registration();
-        return new LoginPage(driver).login(user.getEmail(), user.getPassword());
-    }
-
-    private static final int TIME = 10;
 }

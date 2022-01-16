@@ -10,15 +10,15 @@ import static com.PO.MainPage.URL;
 
 public class ForgotPasswordPage extends PageBase {
 
+    public static final String URL_FORGOT_PASSWORD = URL + "forgot-password";
+
+    @FindBy(xpath = "//*[contains(@class, 'Auth_link')][contains(text(), 'Войти')]")
+    public WebElement buttonLogin;
+
     public ForgotPasswordPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
-
-    private static final String URL_FORGOT_PASSWORD = URL + "forgot-password";
-
-    @FindBy(xpath = "//*[contains(@class, 'Auth_link')][contains(text(), 'Войти')]")
-    public WebElement buttonLogin;
 
     @Step
     public ForgotPasswordPage open() {

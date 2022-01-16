@@ -11,12 +11,7 @@ import static com.PO.MainPage.URL;
 
 public class RegisterPage extends PageBase {
 
-    private static final String URL_REGISTER = URL + "register";
-
-    public RegisterPage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
+    public static final String URL_REGISTER = URL + "register";
 
     @FindBy(xpath = "//*[@name = 'Пароль']")
     public WebElement passwordWeb;
@@ -39,18 +34,25 @@ public class RegisterPage extends PageBase {
     @FindBy(xpath = "//*[contains(@class, 'Auth_link')][contains(text(), 'Войти')]")
     public WebElement buttonLogin;
 
+    public RegisterPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
+
     @Step
     public RegisterPage open() {
         driver.get(URL_REGISTER);
         return this;
     }
 
+    @Step
     public RegisterPage inputUserEmail(String email) {
         emailWeb.click();
         emailWeb.sendKeys(email);
         return this;
     }
 
+    @Step
     public RegisterPage inputUserName(String name) {
         namedWeb.click();
         namedWeb.sendKeys(name);
@@ -73,14 +75,17 @@ public class RegisterPage extends PageBase {
         return this;
     }
 
+    @Step
     public void clickButtonRegister() {
         buttonRegister.click();
     }
 
+    @Step
     public String getTextRegisterErrorPassword() {
         return textErrorRegisterPassword.getText();
     }
 
+    @Step
     public String getTextRegisterErrorEmail() {
         wait.until(ExpectedConditions.visibilityOf(textErrorRegisterEmail));
         return textErrorRegisterEmail.getText();

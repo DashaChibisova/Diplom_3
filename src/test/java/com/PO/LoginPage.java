@@ -10,10 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import static com.PO.MainPage.URL;
 
 public class LoginPage extends PageBase {
-    public LoginPage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
 
     private static final String URL_LOGIN = URL + "login";
 
@@ -29,6 +25,11 @@ public class LoginPage extends PageBase {
     @FindBy(xpath = "//*[contains(@class, 'Auth_login')]/h2[contains(text(), 'Вход')]")
     public WebElement isLoginPage;
 
+    public LoginPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
+
     @Step
     public MainPage login(String email, String password) {
         wait.until(ExpectedConditions.visibilityOf(isLoginPage));
@@ -39,7 +40,7 @@ public class LoginPage extends PageBase {
         buttonEnter.click();
         return new MainPage(driver);
     }
-
+    @Step
     public boolean isLoginPage() {
         return wait.until(ExpectedConditions.urlToBe(URL_LOGIN));
     }

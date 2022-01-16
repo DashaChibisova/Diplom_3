@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
-public class RegistrationTest extends BaseClass {
+public class RegistrationTest extends TestSteps {
 
     @DisplayName("Можно зарегестрироваться, если пароль содержит 7 символов")
     @Test

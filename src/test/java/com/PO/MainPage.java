@@ -11,11 +11,6 @@ import java.util.List;
 
 public class MainPage extends PageBase {
 
-    public MainPage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
-
     public static final String URL = "https://stellarburgers.nomoreparties.site/";
 
     @FindBy(xpath = "//*[contains(@class, 'AppHeader_header')][contains(text(), 'Личный Кабинет')]")
@@ -32,6 +27,11 @@ public class MainPage extends PageBase {
 
     @FindBy(xpath = "//*[contains(@class, 'button_button')][contains(text(), 'Оформить заказ')]")
     public WebElement buttonCheckout;
+
+    public MainPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
     @Step
     public MainPage open() {
@@ -52,9 +52,8 @@ public class MainPage extends PageBase {
     }
 
     @Step
-    public LoginPage clickOnButtonLogin() {
+    public void clickOnButtonLogin() {
         buttonLogin.click();
-        return new LoginPage(driver);
     }
 
     @Step

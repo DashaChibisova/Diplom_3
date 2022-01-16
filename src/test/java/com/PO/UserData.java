@@ -4,6 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 public class UserData {
 
+    public static final String EMAIL_POSTFIX = "@yandex.ru";
     private  String email;
     private  String password;
     private  String name;
@@ -22,8 +23,6 @@ public class UserData {
         this.password = RandomStringUtils.randomAlphabetic(countPassword);
         return new UserData(email, password, name);
     }
-
-    public static final String EMAIL_POSTFIX = "@yandex.ru";
 
     public String getEmail() {
         return email;

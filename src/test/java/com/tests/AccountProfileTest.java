@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AccountProfileTest extends BaseClass {
+public class AccountProfileTest extends TestSteps {
     private AccountProfilePage account;
     @Before
     public void init() {

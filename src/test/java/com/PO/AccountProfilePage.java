@@ -11,12 +11,6 @@ import static com.PO.MainPage.URL;
 
 public class AccountProfilePage extends PageBase {
 
-
-    public AccountProfilePage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
-
     private static final String URL_PROFILE = URL + "account/profile";
 
     @FindBy(xpath = "//*[contains(@class, 'Account_link')][contains(text(), 'Профиль')]")
@@ -30,6 +24,11 @@ public class AccountProfilePage extends PageBase {
 
     @FindBy(xpath = "//button[contains(text(), 'Выход')]")
     public WebElement buttonExit;
+
+    public AccountProfilePage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
     @Step
     public boolean isAccountProfile() {
